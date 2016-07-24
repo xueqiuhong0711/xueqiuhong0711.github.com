@@ -1,0 +1,81 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Untitled Document</title>
+</head>
+<style>
+*{ margin:0; padding:0;}
+.but{ margin:30px;}
+.but input{ width:80px; height:20px; overflow:hidden; border:none; background:none;}
+.color_value{ margin-left:75px;}
+.color_value span{width:85px; display:inline-block; text-align:center;}
+@keyframes test{
+ from{left:0px;}
+ to{left:-226px;}
+}
+.box{ width:1000px;height:50px; border:1px solid #000; margin:100px auto; overflow:hidden;  position:relative; border-radius:20px;}
+.box div{width:2000px;height:50px; position:absolute; left:0px; top:0;
+-webkit-animation:test 1s linear infinite;
+-moz-animation:test 1s linear infinite;
+-ms-animation:test 1s linear infinite;
+-o-animation:test 1s linear infinite;
+animation:test 1s linear infinite;
+}
+</style>
+<script>
+window.onload=function(){
+	var aInput= document.querySelectorAll('input');
+	var oColVal= document.querySelector('.color_value');
+	var oBox= document.querySelector('.box div');
+	var a=[];
+	var arr=[];
+	function col(str){
+		oBox.style.background='-webkit-repeating-linear-gradient(45deg'+str+')';
+		oBox.style.background='-moz-repeating-linear-gradient(45deg'+str+')';
+		oBox.style.background='-ms-repeating-linear-gradient(45deg'+str+')';
+		oBox.style.background='-0-repeating-linear-gradient(45deg'+str+')';
+		oBox.style.background='repeating-linear-gradient(45deg'+str+')';
+	}
+	function tab(index){
+		aInput[index].onchange=function(){
+			a[index].innerHTML=this.value;
+			a[index].style.color=this.value;
+			arr[index]=', '+a[index].innerHTML+' '+index*20+'px,'+a[index].innerHTML+' '+(index+1)*20+'px';
+			
+			col(arr.join(''));
+		};
+	}
+	for(var i=0; i<aInput.length; i++){
+		var aSpan=document.createElement('span');
+		aSpan.innerHTML=aInput[i].value;
+		aSpan.style.color=aInput[i].value;
+		oColVal.appendChild(aSpan);
+		a.push(aSpan);	
+		arr.push(', '+a[i].innerHTML+' '+i*20+'px,'+a[i].innerHTML+' '+(i+1)*20+'px');
+		tab(i)	
+		
+	}
+	col(arr.join(''));	
+};
+</script>
+<body>
+<div class="but">颜色：
+    <input type="color" value="#ff6d26">
+    <input type="color" value="#38f739">
+    <input type="color" value="#ff7c9d">
+    <input type="color" value="#343fff">
+    <input type="color" value="#ff6d26">
+    <input type="color" value="#38f739">
+    <input type="color" value="#ff7c9d">
+    <input type="color" value="#343fff">
+</div>
+<div class="color_value"></div>
+<div class=""></div>
+<div class="box">
+	<div></div>
+</div>
+
+
+</body>
+</html>
