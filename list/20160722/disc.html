@@ -18,17 +18,10 @@ window.onload=function(){
 	var oBox = document.querySelector('.box');
 	var timer=null;
 	var d = 0;
-	function bg(){
-		oBox.style.background = '-webkit-linear-gradient('+(d+=2)+'deg,#1a110b,#1a110b,#1a110b,#1a110b,#5d4034,#1a110b,#1a110b)';
-		oBox.style.background = '-moz-linear-gradient('+(d+=2)+'deg,#1a110b,#1a110b,#1a110b,#1a110b,#5d4034,#1a110b,#1a110b)';
-		oBox.style.background = '-ms-linear-gradient('+(d+=2)+'deg,#1a110b,#1a110b,#1a110b,#1a110b,#5d4034,#1a110b,#1a110b)';
-		oBox.style.background = '-o-linear-gradient('+(d+=2)+'deg,#1a110b,#1a110b,#1a110b,#1a110b,#5d4034,#1a110b,#1a110b)';
-		oBox.style.background = 'linear-gradient('+(d+=2)+'deg,#1a110b,#1a110b,#1a110b,#1a110b,#5d4034,#1a110b,#1a110b)';
-	}
-	bg();
+	oBox.style.background = 'linear-gradient('+(d+=2)+'deg,#1a110b,#1a110b,#1a110b,#1a110b,#5d4034,#1a110b,#1a110b)';
 	oDiv.onmouseover=function(){
 		timer=setInterval(function(){
-			bg()
+			oBox.style.background = 'linear-gradient('+(d+=2)+'deg,#1a110b,#1a110b,#1a110b,#1a110b,#5d4034,#1a110b,#1a110b)';
 		},30);
 	};
 	oDiv.onmouseout=function(){
